@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sam Reeder - My Travels</title>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- jQuery + official responsive image map plugin -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topbanner">
+    <img src="images/samreederportrait.jpeg" alt="Photo of Sam Reeder" class="profileimage">
+    <h1>Sam Reeder</h1>
+    <p class="tagline">Programmer by day, pro-gamer by night.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mytravels.html" class="activelink">My Travels</a></li>
+      <li><a href="clips.html">Clips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>My Travels</h2>
+    <p>Click a marked place on the map to see photos from my trip there!</p>
+
+    <img src="images/us-map.png" 
+         alt="Map of the United States + Japan" 
+         usemap="#statemap" 
+         class="usmap"
+         width="959"
+         height="593">
+
+    <map name="statemap">
+      <area shape="circle" coords="103,317,55"   href="#" alt="California"   data-state-target="overlay-california">
+      <area shape="circle" coords="166,382,55"   href="#" alt="Arizona"      data-state-target="overlay-arizona">
+      <area shape="circle" coords="337,268,55"   href="#" alt="Colorado"     data-state-target="overlay-colorado">
+      <area shape="circle" coords="115,517,55"   href="#" alt="Alaska"       data-state-target="overlay-alaska">
+      <area shape="circle" coords="285,542,55"   href="#" alt="Hawaii"       data-state-target="overlay-hawaii">
+      <area shape="circle" coords="610,461,55"   href="#" alt="Mississippi"  data-state-target="overlay-mississippi">
+      <area shape="circle" coords="859,408,55"   href="#" alt="Japan"        data-state-target="overlay-japan">
+    </map>
+
+    <div id="overlay-backdrop" class="overlay-backdrop hidden">
+      <!-- Alaska -->
+      <div id="overlay-alaska" class="state-overlay hidden">
+        <h3>ALASKA</h3>
+
+        <img src="images/travel/Alaska.jpg" alt="Alaska trip">
+        <p class="photo-caption">Portage 2019</p>
+        <p class="photo-description">
+          Hanging out on a glacier near Portage with my sister!
+        </p>
+
+        <img src="images/travel/Alaska2.jpg" alt="Alaska trip 2">
+        <p class="photo-caption">Seward 2019</p>
+        <p class="photo-description">
+          Walking around the Lowell Point Black Sand Beach in Seward.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- California -->
+      <div id="overlay-california" class="state-overlay hidden">
+        <h3>CALIFORNIA</h3>
+
+        <img src="images/travel/California.jpg" alt="California trip">
+        <p class="photo-caption">San Gabriel Mountains 2020</p>
+        <p class="photo-description">
+          Amazing view from the peak of Mt. Baldy in the San Gabriel Mountains.
+        </p>
+
+        <img src="images/travel/California2.jpg" alt="California trip 2">
+        <p class="photo-caption">Imperial County 2020</p>
+        <p class="photo-description">
+          Hanging out in the Imperial Sand Dunes.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- Hawaii -->
+      <div id="overlay-hawaii" class="state-overlay hidden">
+        <h3>HAWAII</h3>
+
+        <img src="images/travel/Hawaii.jpg" alt="Hawaii trip">
+        <p class="photo-caption">O'ahu 2023</p>
+        <p class="photo-description">
+          Tropical views from Pali Lookout in Oahu.
+        </p>
+
+        <img src="images/travel/Hawaii2.jpg" alt="Hawaii trip 2">
+        <p class="photo-caption">O'ahu 2023</p>
+        <p class="photo-description">
+          Taking a pic with my brother Officer Toms at Pali Lookout.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- Arizona -->
+      <div id="overlay-arizona" class="state-overlay hidden">
+        <h3>ARIZONA</h3>
+
+        <img src="images/travel/Arizona.jpg" alt="Arizona trip">
+        <p class="photo-caption">Gila Mountains 2022</p>
+        <p class="photo-description">
+          Made a challenging hike up Jester's trail near Fortuna Foothills. Worth the view!
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- Colorado -->
+      <div id="overlay-colorado" class="state-overlay hidden">
+        <h3>COLORADO</h3>
+
+        <img src="images/travel/Colorado.jpg" alt="Colorado trip">
+        <p class="photo-caption">Estes Park 2018</p>
+        <p class="photo-description">
+          Hiking with the boys on the Fern Lake trail. We had the whole thing to ourselves!
+        </p>
+
+        <img src="images/travel/Colorado2.jpg" alt="Colorado trip 2">
+        <p class="photo-caption">Estes Park 2018</p>
+        <p class="photo-description">
+          Hiked up to Fern Lake in Estes Park and camped through a blizzard to wake up to this.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- Mississippi -->
+      <div id="overlay-mississippi" class="state-overlay hidden">
+        <h3>MISSISSIPPI</h3>
+
+        <img src="images/travel/Mississippi.jpg" alt="Typical Winter in Mississippi">
+        <p class="photo-caption">Kiln 2024</p>
+        <p class="photo-description">
+          Typical winter day in South MS with 10 inches of snow.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+
+      <!-- Japan -->
+      <div id="overlay-japan" class="state-overlay hidden">
+        <h3>JAPAN</h3>
+
+        <img src="images/travel/Japan.jpg" alt="Japan trip">
+        <p class="photo-caption">Matsumoto 2024</p>
+        <p class="photo-description">
+          Breathtaking afternoon view of Matsumoto Castle in the Nagano mountain region of Japan.
+        </p>
+
+        <img src="images/travel/Japan2.jpg" alt="Japan trip 2">
+        <p class="photo-caption">Iwakuni 2024</p>
+        <p class="photo-description">
+          A moment to take in the scenery after hiking up to Iwakuni Castle.
+        </p>
+
+        <button type="button" class="close-overlay">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Sam Reeder</p>
+  </footer>
+</body>
+</html>

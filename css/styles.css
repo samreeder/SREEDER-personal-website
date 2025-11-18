@@ -1,0 +1,329 @@
+/*
+Student Name: Samuel Reeder
+File Name: styles.css
+Date: 11/17/2025
+*/
+
+/* CSS Reset                                             */
+/*-------------------------------------------------------*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body, img, h1, h2, h3, p, ul, li, a, figure {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* General page styling                                   */
+/*-------------------------------------------------------*/
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #333;
+    color: #ebe8e8;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.p-group {
+  margin-bottom: 1.5rem;  /* big gap after each group of two */
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* About me box on homepage                               */
+.aboutme {
+    line-height: 1.6rem;
+    display: inline-block;
+    border: 2px solid #759FBC;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin: 16px auto;
+}
+
+/* Header / top banner                                    */
+/*-------------------------------------------------------*/
+.topbanner {
+    background-color: #184f6d;
+    width: 75%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.profileimage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #759FBC;
+    object-fit: cover;
+}
+
+.profileimage:hover {
+    border-color: rgba(161, 200, 228, 0.9);
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin: 10px 0;
+}
+
+.tagline {
+    color: #759FBC;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+/* Navigation                                             */
+/*-------------------------------------------------------*/
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #759FBC;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.activelink {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+p a{
+    color: #759FBC;
+    text-decoration: none;
+}
+
+p a:hover{
+    text-decoration: underline;
+}
+
+/* Main content                                           */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;   /* centers the content */
+}
+
+/* My Travels page — map & overlays                  */
+/*-------------------------------------------------------*/
+.usmap {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+}
+
+.overlay-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.hidden { display: none; }
+
+.overlay-backdrop.hidden { display: none; }
+
+.state-overlay {
+    background-color: #184f6d;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+    text-align: center;
+}
+
+.state-overlay img {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 8px;
+    margin: 10px 0 2px;
+}
+
+/* NEW: text styling for state headings inside state overlays */
+.state-overlay h3{
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* NEW: text styling for paragraphs inside state overlays */
+.state-overlay p.photo-description {
+    border: 2px solid #759FBC;
+    border-radius: 8px;
+    padding: 20px; 
+    font-size: 24px;     /* bump this up as much as you want */
+    line-height: 1.5;      /* nicer spacing between lines */
+    margin: 0.6rem 0 0.6rem;    /* little space above/below the text */
+}
+
+/* Small italic caption directly under each photo */
+.state-overlay p.photo-caption {
+    font-size: 0.9rem;      /* smaller than normal body text */
+    font-style: italic;
+    margin: 0.1rem 0 0.2rem;
+    color: #e2f3ff;         /* light, readable on the blue background */
+}
+
+.close-overlay {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+/* Clips page — video grid (centered, consistent spacing) */
+/*--------------------------------------------------------*/
+.clips-section { 
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.video-grid {
+    display: grid;
+    gap: 2rem 3rem;           /* slightly smaller vertical gap */
+    margin: 1.5rem auto 0;    /* SMALL top margin, NO bottom margin */
+    max-width: 1400px;                              /* keeps grid from stretching too wide */
+    padding: 0 20px;
+
+    /* NEW: flexible number of columns, min 280px wide, centered */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-items: center;    /* center videos inside each cell */
+    justify-content: center;   
+}
+
+/* Keep all videos about the same size */
+.video-grid iframe {
+    width: 600px;          /* preferred video width */
+    max-width: 100%;       /* don't overflow on small screens */
+    aspect-ratio: 16 / 9;  /* keep 16:9 ratio */
+    box-shadow: 0 0 15px rgba(117, 159, 188, 0.4);
+    border: 1px solid rgba(117, 159, 188, 0.3)
+}
+
+.video-grid iframe:hover {
+    border-color: rgba(117, 159, 188, 0.9);  /* stronger on hover */
+    box-shadow: 0 0 18px rgba(117, 159, 188, 0.75);
+}
+
+
+/* Contact form                                          */
+/*-------------------------------------------------------*/
+#contact-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    border: 2px solid #759FBC;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: left;
+}
+
+#contact-form label {
+    font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #759FBC;
+    background: #444;
+    color: #fff;
+}
+
+#contact-form button {
+    align-self: flex-start;
+    padding: 0.7rem 1.5rem;
+    background: #759FBC;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#form-status {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Footer                                                 */
+footer {
+    margin: 80px 0 20px;
+    color: #777;
+}
+
+/* RESPONSIVE DESIGN                                     */
+/*-------------------------------------------------------*/
+/* Tablet media queries */
+@media (max-width: 900px) {
+    .topbanner {
+        width: 90%;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* 2 columns on tablet */
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile media queries */
+@media (max-width: 600px) {
+    .profileimage {
+        width: 120px;
+        height: 120px;
+    }
+    
+    h1 { font-size: 2em; }
+    
+    /* 1 video grid column on phones */
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    
+    .aboutme {
+        padding: 15px;
+    }
+
+/* Mobile text style rules for descriptions in state overlays  */
+.state-overlay p.photo-description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0.6rem 0 0.6rem;
+}
+}

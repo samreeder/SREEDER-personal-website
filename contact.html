@@ -1,0 +1,59 @@
+<!--
+Student Name: Samuel Reeder
+File Name: contact.html
+Date: 10/30/2025
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Reeder - Contact</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topbanner">
+    <img src="images/samreederportrait.jpeg" alt="Photo of Sam Reeder" class="profileimage">
+    <h1>Sam Reeder</h1>
+    <p class="tagline">Programmer by day, pro-gamer by night.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mytravels.html">My Travels</a></li>
+      <li><a href="clips.html">Clips</a></li>
+      <li><a href="contact.html" class="activelink">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Contact Me</h2>
+    <p>If you want to party up on Counter-Strike or have any comments, send me a message!</p>
+
+    <form id="contact-form" novalidate>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+
+    <p id="form-status" aria-live="polite"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sam Reeder</p>
+  </footer>
+</body>
+</html>
