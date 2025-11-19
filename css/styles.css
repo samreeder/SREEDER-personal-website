@@ -9,7 +9,7 @@ Date: 11/17/2025
 *, *::before, *::after {
     box-sizing: border-box;
 }
-body, img, h1, h2, h3, p, ul, li, a, figure {
+body, img, h1, h2, h3, p, ul, li, a {
     margin: 0;
     padding: 0;
     border: 0;
@@ -270,6 +270,7 @@ main {
     font-weight: bold;
 }
 
+/* Feedback message after submitting contact form */
 #form-status {
     margin-top: 1rem;
     font-weight: bold;
