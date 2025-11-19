@@ -4,7 +4,7 @@ File Name: styles.css
 Date: 11/17/2025
 */
 
-/* CSS Reset                                             */
+/* CSS Reset */
 /*-------------------------------------------------------*/
 *, *::before, *::after {
     box-sizing: border-box;
@@ -15,7 +15,7 @@ body, img, h1, h2, h3, p, ul, li, a {
     border: 0;
 }
 
-/* General page styling                                   */
+/* General text styling */
 /*-------------------------------------------------------*/
 body {
     font-family: Helvetica, Arial, sans-serif;
@@ -25,16 +25,12 @@ body {
     text-align: center;
 }
 
-.p-group {
-  margin-bottom: 1.5rem;  /* big gap after each group of two */
-}
-
 h2 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-/* About me box on homepage                               */
+/* About me box on homepage */
 .aboutme {
     line-height: 1.6rem;
     display: inline-block;
@@ -46,7 +42,11 @@ h2 {
     margin: 16px auto;
 }
 
-/* Header / top banner                                    */
+.p-group {
+  margin-bottom: 1.5rem;  /* gap after each group of two <p> elements */
+}
+
+/* Header / top banner */
 /*-------------------------------------------------------*/
 .topbanner {
     background-color: #184f6d;
@@ -82,7 +82,7 @@ h1 {
     font-size: 1.2em;
 }
 
-/* Navigation                                             */
+/* Navigation */
 /*-------------------------------------------------------*/
 nav ul {
     list-style: none;
@@ -117,14 +117,14 @@ p a:hover{
     text-decoration: underline;
 }
 
-/* Main content                                           */
+/* Main content */
 main {
     padding: 20px;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;   /* centers the content */
 }
 
-/* My Travels page — map & overlays */
+/* My Travels page map and overlays*/
 /*-------------------------------------------------------*/
 .usmap {
     max-width: 100%;
@@ -134,13 +134,16 @@ main {
 }
 
 .overlay-backdrop {
-    position: fixed;
-    inset: 0;
+    position: fixed; /* keep backdrop fixed when scrolling through state-overlay */
+    top: 0;       /* make sure backdrop doesn't shrink to the size of the current state-overlay */
+    left: 0;      /* ^ */
+    width: 100%;  /* ^ */
+    height: 100%; /* ^ */
     background-color: rgba(0,0,0,0.75);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 999; /* arbitrary number, just to keep overlays on top of My Travels page*/
 }
 
 .hidden { display: none; }
@@ -164,23 +167,14 @@ main {
     max-height: 75vh;
     border-radius: 8px;
     margin: 10px 0 2px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
-/* NEW: text styling for state headings inside state overlays */
+/* Text styling for h3 headings inside state overlays */
 .state-overlay h3{
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 0.5rem;
-}
-
-/* NEW: text styling for paragraphs inside state overlays */
-.state-overlay p.photo-description {
-    border: 2px solid #759FBC;
-    border-radius: 8px;
-    padding: 20px; 
-    font-size: 24px;
-    line-height: 1.5;
-    margin: 0.6rem 0 0.6rem;
 }
 
 /* Small italic caption directly under each photo */
@@ -191,13 +185,25 @@ main {
     color: #e2f3ff; 
 }
 
+/* Text styling for paragraphs inside state overlays */
+.state-overlay p.photo-description {
+    width: fit-content;
+    max-width: 800px;
+    background-color: rgba(51, 51, 51, 0.6);
+    border-radius: 8px;
+    padding: 15px; 
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 0.6rem auto 6rem;
+}
+
 .close-overlay {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
 
-/* Clips page — video grid (centered, consistent spacing) */
+/* Clips page */
 /*--------------------------------------------------------*/
 .clips-section { 
     margin-top: 3rem;
@@ -206,28 +212,42 @@ main {
 
 .video-grid {
     display: grid;
-    gap: 2rem 3rem;           /* slightly smaller vertical gap */
-    margin: 1.5rem auto 0;    /* SMALL top margin, NO bottom margin */
-    max-width: 1400px;                              /* keeps grid from stretching too wide */
+    gap: 2rem 3rem;           
+    margin: 1.5rem auto 0;    
+    max-width: 1400px; 
     padding: 0 20px;
 
-    /* NEW: flexible number of columns, min 280px wide, centered */
+    /* flexible number of columns for videos, centered */
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    justify-items: center;    /* center videos inside each cell */
+    justify-items: center;
     justify-content: center;   
 }
 
-/* Keep all videos about the same size */
+/* Creates black boxes before the embedded video loads in for smoother appearance */
+.video-shell {
+  background-color: #000;  
+  aspect-ratio: 16 / 9;
+}
+
+.video-shell iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+
+/* Keep consistent sizing for videos */
 .video-grid iframe {
-    width: 600px;          /* preferred video width */
-    max-width: 100%;       /* don't overflow on small screens */
-    aspect-ratio: 16 / 9;  /* keep 16:9 ratio */
+    width: 600px;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
     box-shadow: 0 0 15px rgba(117, 159, 188, 0.4);
     border: 1px solid rgba(117, 159, 188, 0.3)
 }
 
 .video-grid iframe:hover {
-    border-color: rgba(117, 159, 188, 0.9);  /* stronger on hover */
+    border-color: rgba(117, 159, 188, 0.9);
     box-shadow: 0 0 18px rgba(117, 159, 188, 0.75);
 }
 
@@ -260,7 +280,7 @@ main {
 }
 
 #contact-form button {
-    align-self: flex-start;
+    align-self: flex-start; /* aligns submit button to start of cross-axis so it doesn't follow container alignment */
     padding: 0.7rem 1.5rem;
     background: #759FBC;
     color: #111;

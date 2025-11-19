@@ -1,43 +1,71 @@
 /*
   Student Name: Samuel Reeder
   File Name: script.js
-  Date: 11/17/2025
-  Description: Responsive image map, overlays, and contact form
+  Date: 11/12/2025
 */
 
 $(document).ready(function () {
 
-  // Make the image map responsive for the My Travels page
-  setupResponsiveMap();
+  setupResponsiveTravelMap();
+  setupMapHotspotOverlays();
+  setupContactForm();
 
-  // Create map overlays
-  $('area[data-state-target]').on('click', function (e) {
-    e.preventDefault();
+});
 
-    var target = $(this).data('state-target');
 
-    // Hide any open overlays
+
+// My Travels overlays
+
+function setupMapHotspotOverlays() {
+  // Setup hotspot areas with their location in the image
+  var $hotspotAreas = $('area[data-overlay-id]');
+
+  // Only activate hotspots on My Travels page
+  if (!$hotspotAreas.length) {
+    return;
+  }
+
+  // Prevent page from refreshing when clicking hotspot
+  $hotspotAreas.on('click', function (event) {
+    event.preventDefault();
+
+    // Find overlay id for current state/country overlay
+    var overlayId = $(this).data('overlay-id');
+
+    // Hide any overlay that might already be open
     $('.state-overlay').addClass('hidden');
 
-    // Show background and the selected overlay
+    // Show the darkened background and overlay for selected state/country
     $('#overlay-backdrop').removeClass('hidden');
-    $('#' + target).removeClass('hidden');
+    $('#' + overlayId).removeClass('hidden');
   });
 
-  // Close map overlay when clicking the background or the Close button
+  // Close overlay by clicking background or Close button
   $('.close-overlay, #overlay-backdrop').on('click', function () {
     $('#overlay-backdrop, .state-overlay').addClass('hidden');
   });
+}
 
-  // CONTACT FORM
-  $('#contact-form').on('submit', function (e) {
-    e.preventDefault();
 
-    var name = $('#name').val().trim();
-    var email = $('#email').val().trim();
-    var message = $('#message').val().trim();
 
-    if (!name || !email || !message) {
+// Contact form
+
+function setupContactForm() {
+  var $contactForm = $('#contact-form');
+
+  // Only use Contact form script on Contact page
+  if (!$contactForm.length) {
+    return;
+  }
+
+  $contactForm.on('submit', function (event) {
+    event.preventDefault();
+
+    var userName = $('#name').val().trim();
+    var userEmail = $('#email').val().trim();
+    var userMessage = $('#message').val().trim();
+
+    if (!userName || !userEmail || !userMessage) {
       $('#form-status').text('Please fill in all fields.');
       return;
     }
@@ -45,85 +73,76 @@ $(document).ready(function () {
     $('#form-status').text('Thanks! Your message was sent to Samuel!');
     this.reset();
   });
-});
+}
 
-/*
-  Make the image map responsive for circle hotspots.
 
-  We know:
-  - The original image size: 959 x 593
-  - Each <area> uses "circle" coords: x, y, r
 
-  We:
-  - Save the original coords once.
-  - On resize, scale x and y to the new width/height.
-  - Scale radius using the average scale.
-*/
-function setupResponsiveMap() {
-  // Find the map image on the page
-  var mapImage = document.querySelector('img[usemap="#statemap"]');
-  if (!mapImage) {
-    // Not on the My Travels page, so nothing to do
+// Responsive image map script
+
+function setupResponsiveTravelMap() {
+  // Select us-map.png as image map
+  var travelMapImage = document.querySelector('img[usemap="#statemap"]');
+
+  // Only run script on My Travels page
+  if (!travelMapImage) {
     return;
   }
 
-  // Original size of the image in pixels
-  var originalWidth = 959;
-  var originalHeight = 593;
+  var originalMapWidth = 959;
+  var originalMapHeight = 593;
 
-  // Get all the <area> elements for this map
-  var areas = document.querySelectorAll('map[name="statemap"] area');
+  // Select all hotspot areas on image map
+  var hotspotAreas = document.querySelectorAll('map[name="statemap"] area');
 
-  // Save the original coords from the HTML into a data attribute
-  var i;
-  for (i = 0; i < areas.length; i++) {
-    var coords = areas[i].getAttribute('coords'); // e.g. "100,325,35"
-    areas[i].setAttribute('data-orig-coords', coords);
+  // Save the original coordinates and radius in new attributes
+  for (var index = 0; index < hotspotAreas.length; index++) {
+    var originalCoords = hotspotAreas[index].getAttribute('coords'); // e.g. "100,325,35"
+    hotspotAreas[index].setAttribute('data-original-coords', originalCoords);
   }
 
-  // This function recalculates coords based on the current image size
-  function resizeMap() {
-    var currentWidth = mapImage.clientWidth;
-    var currentHeight = mapImage.clientHeight;
+  // Recalculates coordinates
+  function recalculateHotspotCoordinates() {
+    var currentMapWidth = travelMapImage.clientWidth;
+    var currentMapHeight = travelMapImage.clientHeight;
 
-    // If the image is not visible yet, skip
-    if (!currentWidth || !currentHeight) {
+    // Skips coord recalculations if image for image map is not visible yet
+    if (!currentMapWidth || !currentMapHeight) {
       return;
     }
 
-    // How much the image has been scaled in each direction
-    var xScale = currentWidth / originalWidth;
-    var yScale = currentHeight / originalHeight;
-    var radiusScale = (xScale + yScale) / 2; // average for radius
+    var xScaleFactor = currentMapWidth / originalMapWidth;
+    var yScaleFactor = currentMapHeight / originalMapHeight;
+    var radiusScaleFactor = (xScaleFactor + yScaleFactor) / 2;
 
-    // Update each area's coords
-    for (var j = 0; j < areas.length; j++) {
-      var original = areas[j].getAttribute('data-orig-coords');
-      if (!original) {
+    // Update each hotspot circle's coords
+    for (var j = 0; j < hotspotAreas.length; j++) {
+      var startingCoords = hotspotAreas[j].getAttribute('data-original-coords');
+      if (!startingCoords) {
         continue;
       }
 
-      var parts = original.split(','); // ["100","325","35"]
-      var originalX = parseFloat(parts[0]);
-      var originalY = parseFloat(parts[1]);
-      var originalRadius = parseFloat(parts[2]);
+      var coordParts = startingCoords.split(',');
+      var originalX = parseFloat(coordParts[0]);
+      var originalY = parseFloat(coordParts[1]);
+      var originalRadius = parseFloat(coordParts[2]);
 
-      var newX = Math.round(originalX * xScale);
-      var newY = Math.round(originalY * yScale);
-      var newRadius = Math.round(originalRadius * radiusScale);
+      // Scale coordinates
+      var newXCoord = Math.round(originalX * xScaleFactor);
+      var newYCoord = Math.round(originalY * yScaleFactor);
+      var newRadius = Math.round(originalRadius * radiusScaleFactor);
 
-      var newCoords = newX + ',' + newY + ',' + newRadius;
-      areas[j].setAttribute('coords', newCoords);
+      var newCoordsString = newXCoord + ',' + newYCoord + ',' + newRadius;
+      hotspotAreas[j].setAttribute('coords', newCoordsString);
     }
   }
 
-  // Run once when the image has loaded
-  if (mapImage.complete) {
-    resizeMap();
+  // Recalculate coords only once the image has loaded
+  if (travelMapImage.complete) {
+    recalculateHotspotCoordinates();
   } else {
-    mapImage.addEventListener('load', resizeMap);
+    travelMapImage.addEventListener('load', recalculateHotspotCoordinates);
   }
 
-  // Run again on window resize (e.g., when rotating phone)
-  window.addEventListener('resize', resizeMap);
+  // Run again if window is resized
+  window.addEventListener('resize', recalculateHotspotCoordinates);
 }
