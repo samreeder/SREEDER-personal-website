@@ -90,7 +90,7 @@ nav ul {
     justify-content: center;
     gap: 26px;
     margin: 20px 0;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* If all the items don’t fit in one row, move extra items down to the next line. */
 }
 
 nav a {
@@ -124,7 +124,7 @@ main {
     margin: 0 auto;   /* centers the content */
 }
 
-/* My Travels page — map & overlays                  */
+/* My Travels page — map & overlays */
 /*-------------------------------------------------------*/
 .usmap {
     max-width: 100%;
@@ -232,7 +232,7 @@ main {
 }
 
 
-/* Contact form                                          */
+/* Contact form */
 /*-------------------------------------------------------*/
 #contact-form {
     max-width: 500px;
@@ -282,7 +282,7 @@ footer {
     color: #777;
 }
 
-/* RESPONSIVE DESIGN                                     */
+/* RESPONSIVE DESIGN */
 /*-------------------------------------------------------*/
 /* Tablet media queries */
 @media (max-width: 900px) {
