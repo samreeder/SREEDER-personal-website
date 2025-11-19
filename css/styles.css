@@ -178,17 +178,17 @@ main {
     border: 2px solid #759FBC;
     border-radius: 8px;
     padding: 20px; 
-    font-size: 24px;     /* bump this up as much as you want */
-    line-height: 1.5;      /* nicer spacing between lines */
-    margin: 0.6rem 0 0.6rem;    /* little space above/below the text */
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 0.6rem 0 0.6rem;
 }
 
 /* Small italic caption directly under each photo */
 .state-overlay p.photo-caption {
-    font-size: 0.9rem;      /* smaller than normal body text */
+    font-size: 0.9rem;
     font-style: italic;
     margin: 0.1rem 0 0.2rem;
-    color: #e2f3ff;         /* light, readable on the blue background */
+    color: #e2f3ff; 
 }
 
 .close-overlay {
