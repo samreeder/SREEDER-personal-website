@@ -56,6 +56,10 @@ h2 {
     margin: 16px auto;
 }
 
+#mytravelsparagraph{
+    color: rgb(159, 209, 209);
+}
+
 #mytravelslink {
     font-size: 18px;
     color: #759FBC;
@@ -149,6 +153,10 @@ main {
 
 /* My Travels page map and overlays*/
 /*-------------------------------------------------------*/
+#redcircle{
+    color: red;
+}
+
 .usmap {
     max-width: 100%;
     height: auto;
@@ -223,14 +231,15 @@ main {
 
 .close-overlay-button {
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 2rem;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
     background: #759FBC;
-    color: #111;
+    color: #000000;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
 }
 
 /* Clips page */
@@ -272,7 +281,7 @@ main {
     width: 600px;
     max-width: 100%;
     aspect-ratio: 16 / 9;
-    box-shadow: 0 0 15px rgba(117, 159, 188, 0.4);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
     border: 1px solid rgba(117, 159, 188, 0.3)
 }
 
@@ -289,7 +298,7 @@ main {
     margin: 2rem auto;
     border: 2px solid #759FBC;
     border-radius: 10px;
-    padding: 10px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -311,13 +320,14 @@ main {
 
 #contact-form button {
     margin: auto;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     background: #759FBC;
-    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
 }
 
 /* Feedback message after submitting contact form */
