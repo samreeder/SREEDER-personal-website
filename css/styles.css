@@ -78,7 +78,7 @@ h1 {
 
 .tagline {
     color: #759FBC;
-    font-style: italic;
+    font-style: italic, bold;
     font-size: 1.2em;
 }
 
@@ -96,7 +96,8 @@ nav ul {
 nav a {
     color: #759FBC;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -105,7 +106,7 @@ nav a:hover {
 
 nav a.activelink {
     text-decoration: underline;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 p a{
@@ -147,8 +148,6 @@ main {
 }
 
 .hidden { display: none; }
-
-.overlay-backdrop.hidden { display: none; }
 
 .state-overlay {
     background-color: #184f6d;
@@ -197,10 +196,16 @@ main {
     margin: 0.6rem auto 6rem;
 }
 
-.close-overlay {
+.close-overlay-button {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    background: #759FBC;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* Clips page */
@@ -280,7 +285,7 @@ main {
 }
 
 #contact-form button {
-    align-self: flex-start; /* aligns submit button to start of cross-axis so it doesn't follow container alignment */
+    margin: auto;
     padding: 0.7rem 1.5rem;
     background: #759FBC;
     color: #111;

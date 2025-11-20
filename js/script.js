@@ -40,9 +40,14 @@ function setupMapHotspotOverlays() {
     $('#' + overlayId).removeClass('hidden');
   });
 
-  // Close overlay by clicking background or Close button
-  $('.close-overlay, #overlay-backdrop').on('click', function () {
-    $('#overlay-backdrop, .state-overlay').addClass('hidden');
+  // Close overlay ONLY by clicking background outside of state-overlay or Close button
+  $('.close-overlay-button, #overlay-backdrop').on('click', function (event) {
+    if (
+      event.target.id === 'overlay-backdrop' ||
+      $(event.target).hasClass('close-overlay-button')
+      ) {
+        $('#overlay-backdrop, .state-overlay').addClass('hidden');
+        }
   });
 }
 
@@ -70,7 +75,7 @@ function setupContactForm() {
       return;
     }
 
-    $('#form-status').text('Thanks! Your message was sent to Samuel!');
+    $('#form-status').text('Wonderful! Your message was sent to Samuel!');
     this.reset();
   });
 }
