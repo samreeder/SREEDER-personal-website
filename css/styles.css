@@ -102,7 +102,7 @@ h2 {
 
 h1 {
     color: #f5fcff;
-    font-size: 40px;
+    font-size: 2.5rem;
     margin: 10px 0;
     letter-spacing: 1px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -203,7 +203,7 @@ main {
 
 /* Text styling for h3 headings inside state overlays */
 .state-overlay h3{
-    font-size: 30px;
+    font-size: 1.9rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
