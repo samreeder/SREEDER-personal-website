@@ -82,7 +82,7 @@ function setupContactForm() {
 
 
 
-// Responsive image map script
+// Responsive image map script - Takes original hotspot coordinates and radii and rescales them depending on image map size!
 
 function setupResponsiveTravelMap() {
   // Select us-map.png as image map

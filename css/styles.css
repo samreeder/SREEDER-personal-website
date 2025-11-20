@@ -22,12 +22,20 @@ html {
 
 /* General text styling */
 /*-------------------------------------------------------*/
+
+html, body {
+    height: 100%; /* html and body fill viewport */
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     background-color: #333;
     color: #ebe8e8;
     line-height: 1.6;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h2 {
@@ -67,8 +75,8 @@ h2 {
 /*-------------------------------------------------------*/
 .topbanner {
     background-color: #184f6d;
-    width: 75%;
-    max-width: 1000px;
+    width: 80%;
+    max-width: 1100px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
@@ -136,6 +144,7 @@ main {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;   /* centers the content */
+    flex: 1;
 }
 
 /* My Travels page map and overlays*/
@@ -160,7 +169,9 @@ main {
     z-index: 999; /* arbitrary number, just to keep overlays on top of My Travels page*/
 }
 
-.hidden { display: none; }
+.hidden { 
+    display: none; 
+}
 
 .state-overlay {
     background-color: #184f6d;
@@ -201,12 +212,13 @@ main {
 .state-overlay p.photo-description {
     width: fit-content;
     max-width: 800px;
-    background-color: rgba(51, 51, 51, 0.6);
+    background-color: #333;
     border-radius: 8px;
     padding: 15px; 
     font-size: 22px;
     line-height: 1.5;
     margin: 0.6rem auto 6rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
 .close-overlay-button {
@@ -242,12 +254,12 @@ main {
 }
 
 /* Creates black boxes before the embedded video loads in for smoother appearance */
-.video-shell {
+.video-absence {
   background-color: #000;  
   aspect-ratio: 16 / 9;
 }
 
-.video-shell iframe {
+.video-absence iframe {
   width: 100%;
   height: 100%;
   border: none;
@@ -316,8 +328,15 @@ main {
 
 /* Footer                                                 */
 footer {
-    margin: 80px 0 20px;
-    color: #777;
+    background-color: #184f6d;
+    color: #fff;
+    width: 80%;
+    max-width: 1100px;
+    margin: 2rem auto 1.5rem auto;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 0.9rem;
 }
 
 /* RESPONSIVE DESIGN */
@@ -346,7 +365,9 @@ footer {
         height: 120px;
     }
     
-    h1 { font-size: 2em; }
+    h1 { 
+        font-size: 2em; 
+    }
     
     /* 1 video grid column on phones */
     .video-grid {
