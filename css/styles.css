@@ -15,6 +15,11 @@ body, img, h1, h2, h3, p, ul, li, a {
     border: 0;
 }
 
+/* Prevent page content from shifting when scrollbar appears */
+html {
+    overflow-y: scroll;
+}
+
 /* General text styling */
 /*-------------------------------------------------------*/
 body {
@@ -37,10 +42,22 @@ h2 {
     border: 2px solid #759FBC;
     border-radius: 10px;
     padding: 30px;
+    font-weight: bold;
     text-align: center;
     max-width: 800px;
     margin: 16px auto;
 }
+
+#mytravelslink {
+    font-size: 18px;
+    color: #759FBC;
+    text-decoration: none;
+}
+
+#mytravelslink:hover {
+    text-decoration: underline;
+}
+
 
 .p-group {
   margin-bottom: 1.5rem;  /* gap after each group of two <p> elements */
@@ -63,6 +80,7 @@ h2 {
     height: 150px;
     border-radius: 50%;
     border: 4px solid #759FBC;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
     object-fit: cover;
 }
 
@@ -71,15 +89,18 @@ h2 {
 }
 
 h1 {
-    color: #fff;
-    font-size: 2.5em;
+    color: #f5fcff;
+    font-size: 40px;
     margin: 10px 0;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .tagline {
-    color: #759FBC;
-    font-style: italic, bold;
-    font-size: 1.2em;
+    color: #c0e4ff;
+    font-style: italic;
+    font-size: 19px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Navigation */
@@ -109,14 +130,6 @@ nav a.activelink {
     font-size: 24px;
 }
 
-p a{
-    color: #759FBC;
-    text-decoration: none;
-}
-
-p a:hover{
-    text-decoration: underline;
-}
 
 /* Main content */
 main {
@@ -320,7 +333,7 @@ footer {
         gap: 15px;
     }
     
-    /* 2 columns on tablet */
+    /* 2 columns video grid on tablet */
     .video-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -347,9 +360,9 @@ footer {
     }
 
 /* Mobile text style rules for descriptions in state overlays  */
-.state-overlay p.photo-description {
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 0.6rem 0 0.6rem;
+    .state-overlay p.photo-description {
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0.6rem 0 0.6rem;
 }
 }
